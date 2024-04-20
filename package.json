@@ -9,6 +9,7 @@
   "workspaces": [
     "_api/node-sdk",
     "_api/web-sdk",
+    "apps/**",
     "lib/web-sdk"
   ],
   "scripts": {
@@ -17,7 +18,9 @@
     "format:check": "prettier --check .",
     "schema:lint": "./_cli/schema.sh lint",
     "schema:tools": "./_cli/schema.sh tools",
-    "schema:codegen": "./_cli/schema.sh codegen"
+    "schema:codegen": "./_cli/schema.sh codegen",
+    "harness": "yarn workspace @labset/monorepo-template-harness",
+    "todo": "yarn workspace @labset/monorepo-template-todo"
   },
   "devDependencies": {
     "@labset-eslint/eslint-plugin": "^1.3.0",

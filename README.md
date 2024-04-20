@@ -9,7 +9,7 @@
 - Yarn
 - Golang
 
-## dev setup
+## build it
 
 - install dependencies
 
@@ -27,4 +27,24 @@ yarn schema:tools
 
 ```bash
 yarn schema:codegen
+```
+
+## run it
+
+- setup environment
+
+```bash
+yarn harness env:up
+```
+
+- start the backend
+
+```bash
+yarn todo server:dev
+```
+
+- start the frontend
+
+```bash
+yarn todo web:dev
 ```
