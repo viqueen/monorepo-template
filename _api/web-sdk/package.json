@@ -1,5 +1,5 @@
 {
-  "name": "@labset/protobuf-template-api-web-sdk",
+  "name": "@labset/monorepo-template-api-web-sdk",
   "version": "1.0.0",
   "private": true,
   "main": "dist/index.js",

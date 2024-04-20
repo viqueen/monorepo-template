@@ -1,0 +1,9 @@
+{
+  "name": "@labset/monorepo-template-todo",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "server:dev": "go run server/cmd/main.go",
+    "web:dev": "webpack serve"
+  }
+}
