@@ -17,4 +17,11 @@ function codegen() {
     protobuf-template/protobuf-gen buf generate --verbose
 }
 
+function lint() {
+  docker run \
+    --volume "${PWD}/_schema:/workspace/_schema" \
+    --workdir "/workspace/_schema" \
+    protobuf-template/protobuf-gen buf lint --verbose
+}
+
 eval "$@"

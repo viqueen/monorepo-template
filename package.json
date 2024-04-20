@@ -12,7 +12,9 @@
   ],
   "scripts": {
     "lint": "eslint . --ext .ts",
-    "format": "prettier --write .",
+    "format": "prettier --check --write .",
+    "format:check": "prettier --check .",
+    "schema:lint": "./_cli/schema.sh lint",
     "schema:tools": "./_cli/schema.sh tools",
     "schema:codegen": "./_cli/schema.sh codegen"
   },
@@ -23,6 +25,7 @@
     "eslint": "8.57.0",
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-react": "^7.34.1",
+    "prettier": "^3.2.5",
     "typescript": "^5.4.5"
   }
 }

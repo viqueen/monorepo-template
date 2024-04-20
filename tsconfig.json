@@ -14,8 +14,5 @@
     "strict": true,
     "target": "ES2017"
   },
-  "include": [
-    "_api/web-sdk",
-    "_api/node-sdk"
-  ]
+  "include": ["_api/web-sdk", "_api/node-sdk"]
 }
