@@ -47,7 +47,6 @@ message DeleteResponse {
 }
 
 message ListRequest {
-
 }
 
 message ListResponse {

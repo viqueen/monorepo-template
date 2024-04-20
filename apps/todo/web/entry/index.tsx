@@ -1,9 +1,14 @@
 import React from "react";
+import { QueryClient, QueryClientProvider } from "react-query";
+import { HashRouter, Navigate, Route, Routes } from "react-router-dom";
 
 import { PageLayout } from "@labset/monorepo-template-lib-web-sdk";
 import AdjustIcon from "@mui/icons-material/Adjust";
 import { createTheme, CssBaseline, ThemeProvider } from "@mui/material";
 import { createRoot, hydrateRoot } from "react-dom/client";
+
+import { ConnectApiProvider } from "../context-providers";
+import { DashboardPage, TodoPage } from "../pages";
 
 const App = () => {
   const topNav = {
@@ -13,7 +18,13 @@ const App = () => {
   const sidebarNav = {};
   return (
     <PageLayout topNav={topNav} sidebarNav={sidebarNav}>
-      <div>Content</div>
+      <HashRouter>
+        <Routes>
+          <Route path="/" element={<Navigate to="/dashboard" />} />
+          <Route path="/dashboard" element={<DashboardPage />} />
+          <Route path="/todo/:todoId" element={<TodoPage />} />
+        </Routes>
+      </HashRouter>
     </PageLayout>
   );
 };
@@ -24,10 +35,16 @@ const AppWrapper = () => {
       mode: "dark",
     },
   });
+  const queryClient = new QueryClient();
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <App />
+      <QueryClientProvider client={queryClient}>
+        <ConnectApiProvider>
+          <App />
+        </ConnectApiProvider>
+      </QueryClientProvider>
     </ThemeProvider>
   );
 };
