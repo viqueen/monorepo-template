@@ -2,7 +2,7 @@
   "name": "@labset/monorepo-template-root",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "git@github.com:viqueen/protobuf-template.git",
+  "repository": "git@github.com:viqueen/monorepo-template.git",
   "author": "viqueen <>",
   "license": "Apache-2.0",
   "private": true,
@@ -19,6 +19,7 @@
     "schema:lint": "./_cli/schema.sh lint",
     "schema:tools": "./_cli/schema.sh tools",
     "schema:codegen": "./_cli/schema.sh codegen",
+    "sdks": "./_cli/build.sh sdks",
     "harness": "yarn workspace @labset/monorepo-template-harness",
     "todo": "yarn workspace @labset/monorepo-template-todo"
   },
