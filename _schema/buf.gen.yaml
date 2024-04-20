@@ -1,0 +1,19 @@
+version: v1
+plugins:
+  - plugin: go
+    out: ../_api/go-sdk
+    opt: paths=source_relative
+  - plugin: go-grpc
+    out: ../_api/go-sdk
+    opt: paths=source_relative
+  - plugin: es
+    out: ../_api/web-sdk/src
+    opt: target=ts
+  - plugin: connect-es
+    out: ../_api/web-sdk/src
+    opt: target=ts
+  - plugin: ts
+    out: ../_api/node-sdk/src
+    opt:
+      - generate_services=true
+      - output_services=grpc-js
