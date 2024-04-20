@@ -7,10 +7,11 @@ package todo.v1;
 import "todo/v1/models.proto";
 
 service TodoService {
-  rpc Create(CreateRequest) returns (CreateResponse) {}
-  rpc Read(ReadRequest) returns (ReadResponse) {}
-  rpc Update(UpdateRequest) returns (UpdateResponse) {}
-  rpc Delete(DeleteRequest) returns (DeleteResponse) {}
+  rpc Create(CreateRequest) returns (CreateResponse);
+  rpc Read(ReadRequest) returns (ReadResponse);
+  rpc Update(UpdateRequest) returns (UpdateResponse);
+  rpc Delete(DeleteRequest) returns (DeleteResponse);
+  rpc List(ListRequest) returns (ListResponse);
 }
 
 message CreateRequest {
@@ -43,4 +44,12 @@ message DeleteRequest {
 
 message DeleteResponse {
   Todo todo = 1;
+}
+
+message ListRequest {
+
+}
+
+message ListResponse {
+  repeated Todo todos = 1;
 }

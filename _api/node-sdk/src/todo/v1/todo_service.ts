@@ -561,6 +561,113 @@ export namespace todo.v1 {
             return DeleteResponse.deserialize(bytes);
         }
     }
+    export class ListRequest extends pb_1.Message {
+        #one_of_decls: number[][] = [];
+        constructor(data?: any[] | {}) {
+            super();
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
+            if (!Array.isArray(data) && typeof data == "object") { }
+        }
+        static fromObject(data: {}): ListRequest {
+            const message = new ListRequest({});
+            return message;
+        }
+        toObject() {
+            const data: {} = {};
+            return data;
+        }
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+            const writer = w || new pb_1.BinaryWriter();
+            if (!w)
+                return writer.getResultBuffer();
+        }
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): ListRequest {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new ListRequest();
+            while (reader.nextField()) {
+                if (reader.isEndGroup())
+                    break;
+                switch (reader.getFieldNumber()) {
+                    default: reader.skipField();
+                }
+            }
+            return message;
+        }
+        serializeBinary(): Uint8Array {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes: Uint8Array): ListRequest {
+            return ListRequest.deserialize(bytes);
+        }
+    }
+    export class ListResponse extends pb_1.Message {
+        #one_of_decls: number[][] = [];
+        constructor(data?: any[] | {
+            todos?: dependency_1.todo.v1.Todo[];
+        }) {
+            super();
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
+            if (!Array.isArray(data) && typeof data == "object") {
+                if ("todos" in data && data.todos != undefined) {
+                    this.todos = data.todos;
+                }
+            }
+        }
+        get todos() {
+            return pb_1.Message.getRepeatedWrapperField(this, dependency_1.todo.v1.Todo, 1) as dependency_1.todo.v1.Todo[];
+        }
+        set todos(value: dependency_1.todo.v1.Todo[]) {
+            pb_1.Message.setRepeatedWrapperField(this, 1, value);
+        }
+        static fromObject(data: {
+            todos?: ReturnType<typeof dependency_1.todo.v1.Todo.prototype.toObject>[];
+        }): ListResponse {
+            const message = new ListResponse({});
+            if (data.todos != null) {
+                message.todos = data.todos.map(item => dependency_1.todo.v1.Todo.fromObject(item));
+            }
+            return message;
+        }
+        toObject() {
+            const data: {
+                todos?: ReturnType<typeof dependency_1.todo.v1.Todo.prototype.toObject>[];
+            } = {};
+            if (this.todos != null) {
+                data.todos = this.todos.map((item: dependency_1.todo.v1.Todo) => item.toObject());
+            }
+            return data;
+        }
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+            const writer = w || new pb_1.BinaryWriter();
+            if (this.todos.length)
+                writer.writeRepeatedMessage(1, this.todos, (item: dependency_1.todo.v1.Todo) => item.serialize(writer));
+            if (!w)
+                return writer.getResultBuffer();
+        }
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): ListResponse {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new ListResponse();
+            while (reader.nextField()) {
+                if (reader.isEndGroup())
+                    break;
+                switch (reader.getFieldNumber()) {
+                    case 1:
+                        reader.readMessage(message.todos, () => pb_1.Message.addToRepeatedWrapperField(message, 1, dependency_1.todo.v1.Todo.deserialize(reader), dependency_1.todo.v1.Todo));
+                        break;
+                    default: reader.skipField();
+                }
+            }
+            return message;
+        }
+        serializeBinary(): Uint8Array {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes: Uint8Array): ListResponse {
+            return ListResponse.deserialize(bytes);
+        }
+    }
     interface GrpcUnaryServiceInterface<P, R> {
         (message: P, metadata: grpc_1.Metadata, options: grpc_1.CallOptions, callback: grpc_1.requestCallback<R>): grpc_1.ClientUnaryCall;
         (message: P, metadata: grpc_1.Metadata, callback: grpc_1.requestCallback<R>): grpc_1.ClientUnaryCall;
@@ -622,6 +729,15 @@ export namespace todo.v1 {
                 requestDeserialize: (bytes: Buffer) => DeleteRequest.deserialize(new Uint8Array(bytes)),
                 responseSerialize: (message: DeleteResponse) => Buffer.from(message.serialize()),
                 responseDeserialize: (bytes: Buffer) => DeleteResponse.deserialize(new Uint8Array(bytes))
+            },
+            List: {
+                path: "/todo.v1.TodoService/List",
+                requestStream: false,
+                responseStream: false,
+                requestSerialize: (message: ListRequest) => Buffer.from(message.serialize()),
+                requestDeserialize: (bytes: Buffer) => ListRequest.deserialize(new Uint8Array(bytes)),
+                responseSerialize: (message: ListResponse) => Buffer.from(message.serialize()),
+                responseDeserialize: (bytes: Buffer) => ListResponse.deserialize(new Uint8Array(bytes))
             }
         };
         [method: string]: grpc_1.UntypedHandleCall;
@@ -629,6 +745,7 @@ export namespace todo.v1 {
         abstract Read(call: grpc_1.ServerUnaryCall<ReadRequest, ReadResponse>, callback: grpc_1.sendUnaryData<ReadResponse>): void;
         abstract Update(call: grpc_1.ServerUnaryCall<UpdateRequest, UpdateResponse>, callback: grpc_1.sendUnaryData<UpdateResponse>): void;
         abstract Delete(call: grpc_1.ServerUnaryCall<DeleteRequest, DeleteResponse>, callback: grpc_1.sendUnaryData<DeleteResponse>): void;
+        abstract List(call: grpc_1.ServerUnaryCall<ListRequest, ListResponse>, callback: grpc_1.sendUnaryData<ListResponse>): void;
     }
     export class TodoServiceClient extends grpc_1.makeGenericClientConstructor(UnimplementedTodoServiceService.definition, "TodoService", {}) {
         constructor(address: string, credentials: grpc_1.ChannelCredentials, options?: Partial<grpc_1.ChannelOptions>) {
@@ -645,6 +762,9 @@ export namespace todo.v1 {
         };
         Delete: GrpcUnaryServiceInterface<DeleteRequest, DeleteResponse> = (message: DeleteRequest, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<DeleteResponse>, options?: grpc_1.CallOptions | grpc_1.requestCallback<DeleteResponse>, callback?: grpc_1.requestCallback<DeleteResponse>): grpc_1.ClientUnaryCall => {
             return super.Delete(message, metadata, options, callback);
+        };
+        List: GrpcUnaryServiceInterface<ListRequest, ListResponse> = (message: ListRequest, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<ListResponse>, options?: grpc_1.CallOptions | grpc_1.requestCallback<ListResponse>, callback?: grpc_1.requestCallback<ListResponse>): grpc_1.ClientUnaryCall => {
+            return super.List(message, metadata, options, callback);
         };
     }
 }
