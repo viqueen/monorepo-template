@@ -3,4 +3,5 @@ go 1.22.0
 use (
 	./_api/go-sdk
 	./apps/todo
+	./lib/go-sdk
 )

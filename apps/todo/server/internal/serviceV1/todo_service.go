@@ -47,6 +47,17 @@ func (t TodoService) Delete(ctx context.Context, request *todoV1.DeleteRequest) 
 	if !ok {
 		return nil, status.Error(codes.NotFound, "not found")
 	}
+
 	delete(t.inMemory, request.Id)
 	return &todoV1.DeleteResponse{Todo: found}, nil
+}
+
+func (t TodoService) List(ctx context.Context, request *todoV1.ListRequest) (*todoV1.ListResponse, error) {
+	todos := make([]*todoV1.Todo, 0, len(t.inMemory))
+	for _, v := range t.inMemory {
+		todos = append(todos, v)
+	}
+	return &todoV1.ListResponse{
+		Todos: todos,
+	}, nil
 }

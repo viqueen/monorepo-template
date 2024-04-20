@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "server:dev": "go run server/cmd/main.go",
+    "server:dev": "nodemon",
     "web:dev": "webpack serve"
   }
 }

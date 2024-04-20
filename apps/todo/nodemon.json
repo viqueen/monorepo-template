@@ -1,0 +1,6 @@
+{
+  "watch": ["./server"],
+  "ext": "go",
+  "signal": "SIGTERM",
+  "exec": "go run server/cmd/main.go"
+}
