@@ -16,17 +16,12 @@ export class Todo extends Message<Todo> {
   id = "";
 
   /**
-   * @generated from field: string title = 2;
-   */
-  title = "";
-
-  /**
-   * @generated from field: string description = 3;
+   * @generated from field: string description = 2;
    */
   description = "";
 
   /**
-   * @generated from field: bool completed = 4;
+   * @generated from field: bool completed = 3;
    */
   completed = false;
 
@@ -39,9 +34,8 @@ export class Todo extends Message<Todo> {
   static readonly typeName = "todo.v1.Todo";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "title", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 3, name: "description", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 4, name: "completed", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+    { no: 2, name: "description", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "completed", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Todo {

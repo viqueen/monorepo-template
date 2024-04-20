@@ -6,8 +6,7 @@ package todo.v1;
 
 message Todo {
   string id = 1;
-  string title = 2;
-  string description = 3;
-  bool completed = 4;
+  string description = 2;
+  bool completed = 3;
 }
 
