@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+option go_package = "github.com/viqueen/protobuf-template/_api/go-sdk/todo/v1;todoV1";
+
+package todo.v1;
+
+import "todo/v1/models.proto";
+
+service TodoService {
+  rpc Create(CreateRequest) returns (CreateResponse) {}
+  rpc Read(ReadRequest) returns (ReadResponse) {}
+  rpc Update(UpdateRequest) returns (UpdateResponse) {}
+  rpc Delete(DeleteRequest) returns (DeleteResponse) {}
+}
+
+message CreateRequest {
+  Todo todo = 1;
+}
+
+message CreateResponse {
+  Todo todo = 1;
+}
+
+message ReadRequest {
+  string id = 1;
+}
+
+message ReadResponse {
+  Todo todo = 1;
+}
+
+message UpdateRequest {
+  Todo todo = 1;
+}
+
+message UpdateResponse {
+  Todo todo = 1;
+}
+
+message DeleteRequest {
+  string id = 1;
+}
+
+message DeleteResponse {
+  Todo todo = 1;
+}
