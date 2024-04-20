@@ -6,22 +6,23 @@
   "author": "viqueen <>",
   "license": "Apache-2.0",
   "private": true,
-  "type": "module",
   "workspaces": [
     "_api/node-sdk",
     "_api/web-sdk"
   ],
   "scripts": {
-    "lint": "eslint",
+    "lint": "eslint . --ext .ts",
     "format": "prettier --write .",
     "schema:tools": "./_cli/schema.sh tools",
     "schema:codegen": "./_cli/schema.sh codegen"
   },
   "devDependencies": {
-    "@eslint/js": "^9.1.1",
-    "eslint": "^9.1.0",
-    "prettier": "^3.2.5",
-    "typescript": "^5.4.5",
-    "typescript-eslint": "^7.7.0"
+    "@labset-eslint/eslint-plugin": "^1.3.0",
+    "@typescript-eslint/eslint-plugin": "^7.7.0",
+    "@typescript-eslint/parser": "^7.7.0",
+    "eslint": "8.57.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-react": "^7.34.1",
+    "typescript": "^5.4.5"
   }
 }
