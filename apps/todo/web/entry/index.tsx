@@ -7,6 +7,12 @@ import AdjustIcon from "@mui/icons-material/Adjust";
 import { createTheme, CssBaseline, ThemeProvider } from "@mui/material";
 import { createRoot, hydrateRoot } from "react-dom/client";
 
+import {
+  PrimarySidebarNav,
+  PrimaryTopNav,
+  SecondarySidebarNav,
+  SecondaryTopNav,
+} from "../components";
 import { ConnectApiProvider } from "../context-providers";
 import { DashboardPage, TodoPage } from "../pages";
 
@@ -14,12 +20,12 @@ const App = () => {
   const topNav = {
     Logo: AdjustIcon,
     productName: "@labset/monorepo-template",
-    Primary: () => <div>Primary Top Nav</div>,
-    Secondary: () => <div>Secondary Top Nav</div>,
+    Primary: PrimaryTopNav,
+    Secondary: SecondaryTopNav,
   };
   const sidebarNav = {
-    Primary: () => <div>Primary Sidebar Nav</div>,
-    Secondary: () => <div>Secondary Sidebar Nav</div>,
+    Primary: PrimarySidebarNav,
+    Secondary: SecondarySidebarNav,
   };
   return (
     <PageLayout topNav={topNav} sidebarNav={sidebarNav}>

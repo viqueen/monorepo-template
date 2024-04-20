@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useMutation, useQuery } from "react-query";
+import { useQuery } from "react-query";
 
 import { TodoV1Service } from "@labset/monorepo-template-api-web-sdk";
 import { Button, Container, Divider, Grid, TextField } from "@mui/material";

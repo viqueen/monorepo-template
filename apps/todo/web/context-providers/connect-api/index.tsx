@@ -1,4 +1,9 @@
-import React, { createContext, PropsWithChildren, useContext } from "react";
+import React, {
+  createContext,
+  PropsWithChildren,
+  useContext,
+  useMemo,
+} from "react";
 
 import { createPromiseClient, PromiseClient } from "@connectrpc/connect";
 import { createGrpcWebTransport } from "@connectrpc/connect-web";
@@ -22,10 +27,18 @@ const ConnectApiProvider = ({ children }: PropsWithChildren) => {
     credentials: "include",
   });
 
-  const todoClient = createPromiseClient(TodoV1Connect.TodoService, transport);
+  const value = useMemo(() => {
+    const todoClient = createPromiseClient(
+      TodoV1Connect.TodoService,
+      transport,
+    );
+    return {
+      todoClient,
+    };
+  }, []);
 
   return (
-    <ConnectApiContext.Provider value={{ todoClient }}>
+    <ConnectApiContext.Provider value={value}>
       {children}
     </ConnectApiContext.Provider>
   );
