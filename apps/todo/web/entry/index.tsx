@@ -14,8 +14,13 @@ const App = () => {
   const topNav = {
     Logo: AdjustIcon,
     productName: "@labset/monorepo-template",
+    Primary: () => <div>Primary Top Nav</div>,
+    Secondary: () => <div>Secondary Top Nav</div>,
   };
-  const sidebarNav = {};
+  const sidebarNav = {
+    Primary: () => <div>Primary Sidebar Nav</div>,
+    Secondary: () => <div>Secondary Sidebar Nav</div>,
+  };
   return (
     <PageLayout topNav={topNav} sidebarNav={sidebarNav}>
       <HashRouter>

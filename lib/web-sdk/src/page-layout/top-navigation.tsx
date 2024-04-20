@@ -10,7 +10,12 @@ interface TopNavigationProps {
   Secondary?: ComponentType;
 }
 
-const TopNavigation = ({ Logo, productName }: TopNavigationProps) => {
+const TopNavigation = ({
+  Logo,
+  productName,
+  Primary,
+  Secondary,
+}: TopNavigationProps) => {
   return (
     <AppBar
       position="fixed"
@@ -33,7 +38,9 @@ const TopNavigation = ({ Logo, productName }: TopNavigationProps) => {
           >
             {productName}
           </Typography>
+          {Primary && <Primary />}
           <Box sx={{ flexGrow: 1 }}></Box>
+          {Secondary && <Secondary />}
         </Toolbar>
       </Box>
     </AppBar>
