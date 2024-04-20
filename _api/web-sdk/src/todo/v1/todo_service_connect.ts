@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { CreateRequest, CreateResponse, DeleteRequest, DeleteResponse, ReadRequest, ReadResponse, UpdateRequest, UpdateResponse } from "./todo_service_pb.js";
+import { CreateRequest, CreateResponse, DeleteRequest, DeleteResponse, ListRequest, ListResponse, ReadRequest, ReadResponse, UpdateRequest, UpdateResponse } from "./todo_service_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
@@ -46,6 +46,15 @@ export const TodoService = {
       name: "Delete",
       I: DeleteRequest,
       O: DeleteResponse,
+      kind: MethodKind.Unary,
+    },
+    /**
+     * @generated from rpc todo.v1.TodoService.List
+     */
+    list: {
+      name: "List",
+      I: ListRequest,
+      O: ListResponse,
       kind: MethodKind.Unary,
     },
   }

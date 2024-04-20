@@ -1,0 +1,59 @@
+version: "3.9"
+
+services:
+  aws-localstack:
+    image: localstack/localstack:3.0.2
+    environment:
+      - SERVICES=dynamodb,lambda,apigateway,ssm
+    ports:
+      - "4566:4566"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "../../tmp/localstack:/var/lib/localstack"
+    networks:
+      - "local"
+
+  neo4j-graph:
+    image: neo4j:5.16.0-community
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    environment:
+      - NEO4J_AUTH=neo4j/password
+    volumes:
+      - "../../tmp/neo4j:/neo4j"
+    networks:
+      - "local"
+
+  grafana-loki:
+    image: grafana/loki:main-3941767
+    ports:
+      - "3100:3100"
+    volumes:
+      - "../../tmp/loki:/loki"
+    networks:
+      - "local"
+
+  grafana:
+    image: grafana/grafana:9.5.2
+    ports:
+      - "3000:3000"
+    volumes:
+      - "../../tmp/grafana:/var/lib/grafana"
+    networks:
+      - "local"
+
+  envoy-proxy:
+    image: envoyproxy/envoy:v1.29.2
+    command: "/usr/local/bin/envoy -c /etc/envoy/envoy.yaml --log-level debug"
+    volumes:
+      - "./envoy.yaml:/etc/envoy/envoy.yaml"
+      - "../../tmp/envoy:/tmp"
+    ports:
+      - "8080:8080"
+    networks:
+      - "local"
+
+networks:
+  local:
+    driver: "bridge"

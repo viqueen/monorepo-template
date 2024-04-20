@@ -9,7 +9,6 @@ export namespace todo.v1 {
         #one_of_decls: number[][] = [];
         constructor(data?: any[] | {
             id?: string;
-            title?: string;
             description?: string;
             completed?: boolean;
         }) {
@@ -18,9 +17,6 @@ export namespace todo.v1 {
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("id" in data && data.id != undefined) {
                     this.id = data.id;
-                }
-                if ("title" in data && data.title != undefined) {
-                    this.title = data.title;
                 }
                 if ("description" in data && data.description != undefined) {
                     this.description = data.description;
@@ -36,36 +32,26 @@ export namespace todo.v1 {
         set id(value: string) {
             pb_1.Message.setField(this, 1, value);
         }
-        get title() {
+        get description() {
             return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
         }
-        set title(value: string) {
+        set description(value: string) {
             pb_1.Message.setField(this, 2, value);
         }
-        get description() {
-            return pb_1.Message.getFieldWithDefault(this, 3, "") as string;
-        }
-        set description(value: string) {
-            pb_1.Message.setField(this, 3, value);
-        }
         get completed() {
-            return pb_1.Message.getFieldWithDefault(this, 4, false) as boolean;
+            return pb_1.Message.getFieldWithDefault(this, 3, false) as boolean;
         }
         set completed(value: boolean) {
-            pb_1.Message.setField(this, 4, value);
+            pb_1.Message.setField(this, 3, value);
         }
         static fromObject(data: {
             id?: string;
-            title?: string;
             description?: string;
             completed?: boolean;
         }): Todo {
             const message = new Todo({});
             if (data.id != null) {
                 message.id = data.id;
-            }
-            if (data.title != null) {
-                message.title = data.title;
             }
             if (data.description != null) {
                 message.description = data.description;
@@ -78,15 +64,11 @@ export namespace todo.v1 {
         toObject() {
             const data: {
                 id?: string;
-                title?: string;
                 description?: string;
                 completed?: boolean;
             } = {};
             if (this.id != null) {
                 data.id = this.id;
-            }
-            if (this.title != null) {
-                data.title = this.title;
             }
             if (this.description != null) {
                 data.description = this.description;
@@ -102,12 +84,10 @@ export namespace todo.v1 {
             const writer = w || new pb_1.BinaryWriter();
             if (this.id.length)
                 writer.writeString(1, this.id);
-            if (this.title.length)
-                writer.writeString(2, this.title);
             if (this.description.length)
-                writer.writeString(3, this.description);
+                writer.writeString(2, this.description);
             if (this.completed != false)
-                writer.writeBool(4, this.completed);
+                writer.writeBool(3, this.completed);
             if (!w)
                 return writer.getResultBuffer();
         }
@@ -121,12 +101,9 @@ export namespace todo.v1 {
                         message.id = reader.readString();
                         break;
                     case 2:
-                        message.title = reader.readString();
-                        break;
-                    case 3:
                         message.description = reader.readString();
                         break;
-                    case 4:
+                    case 3:
                         message.completed = reader.readBool();
                         break;
                     default: reader.skipField();

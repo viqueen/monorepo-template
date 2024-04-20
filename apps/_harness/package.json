@@ -1,0 +1,11 @@
+{
+  "name": "@labset/monorepo-template-harness",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "env:up": "docker compose up -d",
+    "env:down": "docker compose down",
+    "env:start": "docker compose start",
+    "env:stop": "docker compose stop"
+  }
+}
