@@ -16,10 +16,8 @@
     "lint": "eslint . --ext .ts",
     "format": "prettier --check --write .",
     "format:check": "prettier --check .",
-    "schema:lint": "./_cli/schema.sh lint",
-    "schema:tools": "./_cli/schema.sh tools",
-    "schema:codegen": "./_cli/schema.sh codegen",
-    "sdks": "./_cli/build.sh sdks",
+    "schema": "./_cli/schema.sh",
+    "build": "./_cli/build.sh",
     "harness": "yarn workspace @labset/monorepo-template-harness",
     "todo": "yarn workspace @labset/monorepo-template-todo"
   },
