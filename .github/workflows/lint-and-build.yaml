@@ -44,7 +44,7 @@ jobs:
         - ./_schema:/workspace/schema
         - ./_api:/workspace/api
     steps:
-      - run: cd /workspace/schema && buf generate --verbose
+      - run: buf generate --template /workspace/schema/buf.gen.yaml /workspace/schema --verbose
 
   lint-and-build:
     needs: schema-codegen
