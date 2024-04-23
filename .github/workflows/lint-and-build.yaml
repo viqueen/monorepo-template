@@ -41,8 +41,8 @@ jobs:
     container:
       image: ghcr.io/viqueen/monorepo-template-protobuf-gen:main
       volumes:
-        - _schema:/workspace/schema
-        - _api:/workspace/api
+        - ./_schema:/workspace/schema
+        - ./_api:/workspace/api
     steps:
       - run: cd /workspace/schema && buf generate --verbose
 
