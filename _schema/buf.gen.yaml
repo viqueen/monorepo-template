@@ -31,9 +31,3 @@ plugins:
   # kotlin-sdk
   - plugin: buf.build/protocolbuffers/kotlin
     out: ../_api/kotlin-sdk/src/main/kotlin
-
-  # swift-sdk
-  - plugin: buf.build/connectrpc/swift
-    out: ../_api/swift-sdk
-  - plugin: buf.build/apple/swift
-    out: ../_api/swift-sdk
