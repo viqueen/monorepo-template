@@ -2,7 +2,7 @@ FROM golang:1.22
 
 # Install nodejs
 RUN apt-get update \
-    && apt-get install -y nodejs npm \
+    && apt-get --no-install-recommends install -y nodejs npm \
     && apt-get clean
 
 # Install buf \
@@ -10,7 +10,7 @@ RUN npm install -g @bufbuild/buf
 
 # Install protoc
 RUN apt-get update \
-    && apt-get install -y protobuf-compiler \
+    && apt-get --no-install-recommends install -y protobuf-compiler \
     && apt-get clean
 
 # Install protoc-gen-go and protoc-gen-go-grpc
