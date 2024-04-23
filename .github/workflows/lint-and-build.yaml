@@ -50,6 +50,7 @@ jobs:
           java-version: "17"
           cache: "maven"
       - run: yarn schema codegen ghcr.io/ :main
+      - run: yarn
       - run: yarn build sdks
 
   lint-and-build:

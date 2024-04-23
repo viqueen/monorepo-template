@@ -7,12 +7,13 @@ RUN npm install --ignore-scripts -g @bufbuild/buf
 # Install protoct-gen-ts
 RUN npm install --ignore-scripts -g protoc-gen-ts
 
-RUN addgroup -S nonroot \
-    && adduser -S nonroot -G nonroot
-
-RUN mkdir -p /workspace/schema && chown -R nonroot:nonroot /workspace/schema
-RUN mkdir -p /workspace/api && chown -R nonroot:nonroot /workspace/api
-
-USER nonroot
+#RUN addgroup -S nonroot \
+#    && adduser -S nonroot -G nonroot
+#
+#RUN mkdir -p /workspace/api \
+#    && chown -R nonroot:nonroot /workspace \
+#    && chmod -R 755 /workspace
+#
+#USER nonroot
 
 WORKDIR /workspace/schema
