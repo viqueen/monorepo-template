@@ -38,14 +38,13 @@ jobs:
   schema-codegen:
     needs: schema-tools
     runs-on: ubuntu-22.04
-    container:
-      image: ghcr.io/viqueen/monorepo-template-protobuf-gen:main
-      volumes:
-        - ${{ github.workspace }}/_schema:/workspace/schema
-        - ${{ github.workspace }}/_api:/workspace/api
     steps:
       - uses: actions/checkout@v4
-      - run: buf generate --verbose
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+      - run: yarn schema codegen ghcr.io/ :main
 
   lint-and-build:
     needs: schema-codegen
