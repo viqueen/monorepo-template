@@ -7,3 +7,9 @@ coverage/
 .idea/
 *.iml
 target/
+
+_api/go-sdk/**/*.go
+_api/java-sdk/src
+_api/kotlin-sdk/src
+_api/node-sdk/src/**/*.ts
+_api/web-sdk/src/**/*.ts
