@@ -44,7 +44,7 @@ jobs:
         - ${{ github.workspace }}/_schema:/workspace/schema
         - ${{ github.workspace }}/_api:/workspace/api
     steps:
-      - run: buf generate --template /workspace/schema/buf.gen.yaml /workspace/schema --verbose
+      - run: buf generate --verbose
 
   lint-and-build:
     needs: schema-codegen
