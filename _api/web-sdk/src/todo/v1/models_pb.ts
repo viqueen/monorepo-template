@@ -25,23 +25,6 @@ export class Todo extends Message<Todo> {
    */
   completed = false;
 
-  /**
-   * @generated from oneof todo.v1.Todo.type
-   */
-  type: {
-    /**
-     * @generated from field: todo.v1.SimpleType simple = 4;
-     */
-    value: SimpleType;
-    case: "simple";
-  } | {
-    /**
-     * @generated from field: todo.v1.AdvancedType advanced = 5;
-     */
-    value: AdvancedType;
-    case: "advanced";
-  } | { case: undefined; value?: undefined } = { case: undefined };
-
   constructor(data?: PartialMessage<Todo>) {
     super();
     proto3.util.initPartial(data, this);
@@ -53,8 +36,6 @@ export class Todo extends Message<Todo> {
     { no: 1, name: "id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "description", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "completed", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
-    { no: 4, name: "simple", kind: "message", T: SimpleType, oneof: "type" },
-    { no: 5, name: "advanced", kind: "message", T: AdvancedType, oneof: "type" },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Todo {
@@ -71,86 +52,6 @@ export class Todo extends Message<Todo> {
 
   static equals(a: Todo | PlainMessage<Todo> | undefined, b: Todo | PlainMessage<Todo> | undefined): boolean {
     return proto3.util.equals(Todo, a, b);
-  }
-}
-
-/**
- * @generated from message todo.v1.SimpleType
- */
-export class SimpleType extends Message<SimpleType> {
-  /**
-   * @generated from field: string tag = 1;
-   */
-  tag = "";
-
-  constructor(data?: PartialMessage<SimpleType>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
-
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "todo.v1.SimpleType";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "tag", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-  ]);
-
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SimpleType {
-    return new SimpleType().fromBinary(bytes, options);
-  }
-
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): SimpleType {
-    return new SimpleType().fromJson(jsonValue, options);
-  }
-
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): SimpleType {
-    return new SimpleType().fromJsonString(jsonString, options);
-  }
-
-  static equals(a: SimpleType | PlainMessage<SimpleType> | undefined, b: SimpleType | PlainMessage<SimpleType> | undefined): boolean {
-    return proto3.util.equals(SimpleType, a, b);
-  }
-}
-
-/**
- * @generated from message todo.v1.AdvancedType
- */
-export class AdvancedType extends Message<AdvancedType> {
-  /**
-   * @generated from field: string tag = 1;
-   */
-  tag = "";
-
-  /**
-   * @generated from field: string namespace = 2;
-   */
-  namespace = "";
-
-  constructor(data?: PartialMessage<AdvancedType>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
-
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "todo.v1.AdvancedType";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "tag", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "namespace", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-  ]);
-
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): AdvancedType {
-    return new AdvancedType().fromBinary(bytes, options);
-  }
-
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): AdvancedType {
-    return new AdvancedType().fromJson(jsonValue, options);
-  }
-
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): AdvancedType {
-    return new AdvancedType().fromJsonString(jsonString, options);
-  }
-
-  static equals(a: AdvancedType | PlainMessage<AdvancedType> | undefined, b: AdvancedType | PlainMessage<AdvancedType> | undefined): boolean {
-    return proto3.util.equals(AdvancedType, a, b);
   }
 }
 

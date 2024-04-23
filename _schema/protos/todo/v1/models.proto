@@ -10,17 +10,4 @@ message Todo {
   string id = 1;
   string description = 2;
   bool completed = 3;
-  oneof type {
-    SimpleType simple = 4;
-    AdvancedType advanced = 5;
-  }
-}
-
-message SimpleType {
-  string tag = 1;
-}
-
-message AdvancedType {
-  string tag = 1;
-  string namespace = 2;
 }
