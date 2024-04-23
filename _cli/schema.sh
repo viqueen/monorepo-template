@@ -10,22 +10,18 @@ function tools() {
 function codegen() {
   registry=${1}
   docker run \
-    --volume "${PWD}/_schema:/workspace/_schema" \
-    --volume "${PWD}/_api/go-sdk:/workspace/_api/go-sdk" \
-    --volume "${PWD}/_api/node-sdk:/workspace/_api/node-sdk" \
-    --volume "${PWD}/_api/web-sdk:/workspace/_api/web-sdk" \
-    --volume "${PWD}/_api/java-sdk:/workspace/_api/java-sdk" \
-    --volume "${PWD}/_api/kotlin-sdk:/workspace/_api/kotlin-sdk" \
-    --volume "${PWD}/_api/swift-sdk:/workspace/_api/swift-sdk" \
-    --workdir "/workspace/_schema" \
+    --volume "${PWD}/_schema:/workspace/schema" \
+    --volume "${PWD}/_api:/workspace/api" \
+    --workdir "/workspace/schema" \
     "${registry}"monorepo-template-protobuf-gen buf generate --verbose
 }
 
 function lint() {
+  registry=${1}
   docker run \
-    --volume "${PWD}/_schema:/workspace/_schema" \
-    --workdir "/workspace/_schema" \
-    monorepo-template/protobuf-gen buf lint --verbose
+    --volume "${PWD}/_schema:/workspace/schema" \
+    --workdir "/workspace/schema" \
+    "${registry}"monorepo-template-protobuf-gen buf lint --verbose
 }
 
 eval "$@"

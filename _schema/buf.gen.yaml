@@ -2,32 +2,32 @@ version: v1
 plugins:
   # go-sdk
   - plugin: buf.build/protocolbuffers/go
-    out: ../_api/go-sdk
+    out: ../api/go-sdk
     opt: paths=source_relative
   - plugin: buf.build/grpc/go
-    out: ../_api/go-sdk
+    out: ../api/go-sdk
     opt: paths=source_relative
 
   # web-sdk
   - plugin: buf.build/bufbuild/es
-    out: ../_api/web-sdk/src
+    out: ../api/web-sdk/src
     opt: target=ts
   - plugin: buf.build/connectrpc/es
-    out: ../_api/web-sdk/src
+    out: ../api/web-sdk/src
     opt: target=ts
 
   # node-sdk
   - plugin: ts
     strategy: all
-    out: ../_api/node-sdk/src
+    out: ../api/node-sdk/src
     opt:
       - generate_services=true
       - output_services=grpc-js
 
   # java-sdk
   - plugin: buf.build/protocolbuffers/java
-    out: ../_api/java-sdk/src/main/java
+    out: ../api/java-sdk/src/main/java
 
   # kotlin-sdk
   - plugin: buf.build/protocolbuffers/kotlin
-    out: ../_api/kotlin-sdk/src/main/kotlin
+    out: ../api/kotlin-sdk/src/main/kotlin
