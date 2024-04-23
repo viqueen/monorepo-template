@@ -35,7 +35,7 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
 
-  schema-codegen:
+  schema-codegen-and-build-sdk:
     needs: schema-tools
     runs-on: ubuntu-22.04
     steps:
@@ -44,10 +44,16 @@ jobs:
         with:
           node-version: 20
           cache: "npm"
+      - uses: actions/setup-java@v4
+        with:
+          distribution: "temurin"
+          java-version: "17"
+          cache: "maven"
       - run: yarn schema codegen ghcr.io/ :main
+      - run: yarn build sdks
 
   lint-and-build:
-    needs: schema-codegen
+    needs: schema-codegen-and-build-sdks
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4
@@ -63,4 +69,3 @@ jobs:
       - run: yarn
       - run: yarn lint
       - run: yarn format:check
-      - run: yarn build sdks
