@@ -13,6 +13,7 @@ plugins:
     out: ../_api/web-sdk/src
     opt: target=ts
   - plugin: ts
+    strategy: all
     out: ../_api/node-sdk/src
     opt:
       - generate_services=true

@@ -36,4 +36,28 @@ public interface TodoOrBuilder extends
    * @return The completed.
    */
   boolean getCompleted();
+
+  /**
+   * <code>.todo.v1.SimpleType simple = 4 [json_name = "simple"];</code>
+   * @return Whether the simple field is set.
+   */
+  boolean hasSimple();
+  /**
+   * <code>.todo.v1.SimpleType simple = 4 [json_name = "simple"];</code>
+   * @return The simple.
+   */
+  io.github.viqueen.todo.v1.SimpleType getSimple();
+
+  /**
+   * <code>.todo.v1.AdvancedType advanced = 5 [json_name = "advanced"];</code>
+   * @return Whether the advanced field is set.
+   */
+  boolean hasAdvanced();
+  /**
+   * <code>.todo.v1.AdvancedType advanced = 5 [json_name = "advanced"];</code>
+   * @return The advanced.
+   */
+  io.github.viqueen.todo.v1.AdvancedType getAdvanced();
+
+  public io.github.viqueen.todo.v1.Todo.TypeCase getTypeCase();
 }

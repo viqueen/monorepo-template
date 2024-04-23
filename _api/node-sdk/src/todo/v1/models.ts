@@ -6,12 +6,18 @@
 import * as pb_1 from "google-protobuf";
 export namespace todo.v1 {
     export class Todo extends pb_1.Message {
-        #one_of_decls: number[][] = [];
-        constructor(data?: any[] | {
+        #one_of_decls: number[][] = [[4, 5]];
+        constructor(data?: any[] | ({
             id?: string;
             description?: string;
             completed?: boolean;
-        }) {
+        } & (({
+            simple?: SimpleType;
+            advanced?: never;
+        } | {
+            simple?: never;
+            advanced?: AdvancedType;
+        })))) {
             super();
             pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
@@ -23,6 +29,12 @@ export namespace todo.v1 {
                 }
                 if ("completed" in data && data.completed != undefined) {
                     this.completed = data.completed;
+                }
+                if ("simple" in data && data.simple != undefined) {
+                    this.simple = data.simple;
+                }
+                if ("advanced" in data && data.advanced != undefined) {
+                    this.advanced = data.advanced;
                 }
             }
         }
@@ -44,10 +56,40 @@ export namespace todo.v1 {
         set completed(value: boolean) {
             pb_1.Message.setField(this, 3, value);
         }
+        get simple() {
+            return pb_1.Message.getWrapperField(this, SimpleType, 4) as SimpleType;
+        }
+        set simple(value: SimpleType) {
+            pb_1.Message.setOneofWrapperField(this, 4, this.#one_of_decls[0], value);
+        }
+        get has_simple() {
+            return pb_1.Message.getField(this, 4) != null;
+        }
+        get advanced() {
+            return pb_1.Message.getWrapperField(this, AdvancedType, 5) as AdvancedType;
+        }
+        set advanced(value: AdvancedType) {
+            pb_1.Message.setOneofWrapperField(this, 5, this.#one_of_decls[0], value);
+        }
+        get has_advanced() {
+            return pb_1.Message.getField(this, 5) != null;
+        }
+        get type() {
+            const cases: {
+                [index: number]: "none" | "simple" | "advanced";
+            } = {
+                0: "none",
+                4: "simple",
+                5: "advanced"
+            };
+            return cases[pb_1.Message.computeOneofCase(this, [4, 5])];
+        }
         static fromObject(data: {
             id?: string;
             description?: string;
             completed?: boolean;
+            simple?: ReturnType<typeof SimpleType.prototype.toObject>;
+            advanced?: ReturnType<typeof AdvancedType.prototype.toObject>;
         }): Todo {
             const message = new Todo({});
             if (data.id != null) {
@@ -59,6 +101,12 @@ export namespace todo.v1 {
             if (data.completed != null) {
                 message.completed = data.completed;
             }
+            if (data.simple != null) {
+                message.simple = SimpleType.fromObject(data.simple);
+            }
+            if (data.advanced != null) {
+                message.advanced = AdvancedType.fromObject(data.advanced);
+            }
             return message;
         }
         toObject() {
@@ -66,6 +114,8 @@ export namespace todo.v1 {
                 id?: string;
                 description?: string;
                 completed?: boolean;
+                simple?: ReturnType<typeof SimpleType.prototype.toObject>;
+                advanced?: ReturnType<typeof AdvancedType.prototype.toObject>;
             } = {};
             if (this.id != null) {
                 data.id = this.id;
@@ -75,6 +125,12 @@ export namespace todo.v1 {
             }
             if (this.completed != null) {
                 data.completed = this.completed;
+            }
+            if (this.simple != null) {
+                data.simple = this.simple.toObject();
+            }
+            if (this.advanced != null) {
+                data.advanced = this.advanced.toObject();
             }
             return data;
         }
@@ -88,6 +144,10 @@ export namespace todo.v1 {
                 writer.writeString(2, this.description);
             if (this.completed != false)
                 writer.writeBool(3, this.completed);
+            if (this.has_simple)
+                writer.writeMessage(4, this.simple, () => this.simple.serialize(writer));
+            if (this.has_advanced)
+                writer.writeMessage(5, this.advanced, () => this.advanced.serialize(writer));
             if (!w)
                 return writer.getResultBuffer();
         }
@@ -106,6 +166,12 @@ export namespace todo.v1 {
                     case 3:
                         message.completed = reader.readBool();
                         break;
+                    case 4:
+                        reader.readMessage(message.simple, () => message.simple = SimpleType.deserialize(reader));
+                        break;
+                    case 5:
+                        reader.readMessage(message.advanced, () => message.advanced = AdvancedType.deserialize(reader));
+                        break;
                     default: reader.skipField();
                 }
             }
@@ -116,6 +182,163 @@ export namespace todo.v1 {
         }
         static deserializeBinary(bytes: Uint8Array): Todo {
             return Todo.deserialize(bytes);
+        }
+    }
+    export class SimpleType extends pb_1.Message {
+        #one_of_decls: number[][] = [];
+        constructor(data?: any[] | {
+            tag?: string;
+        }) {
+            super();
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
+            if (!Array.isArray(data) && typeof data == "object") {
+                if ("tag" in data && data.tag != undefined) {
+                    this.tag = data.tag;
+                }
+            }
+        }
+        get tag() {
+            return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
+        }
+        set tag(value: string) {
+            pb_1.Message.setField(this, 1, value);
+        }
+        static fromObject(data: {
+            tag?: string;
+        }): SimpleType {
+            const message = new SimpleType({});
+            if (data.tag != null) {
+                message.tag = data.tag;
+            }
+            return message;
+        }
+        toObject() {
+            const data: {
+                tag?: string;
+            } = {};
+            if (this.tag != null) {
+                data.tag = this.tag;
+            }
+            return data;
+        }
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+            const writer = w || new pb_1.BinaryWriter();
+            if (this.tag.length)
+                writer.writeString(1, this.tag);
+            if (!w)
+                return writer.getResultBuffer();
+        }
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): SimpleType {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new SimpleType();
+            while (reader.nextField()) {
+                if (reader.isEndGroup())
+                    break;
+                switch (reader.getFieldNumber()) {
+                    case 1:
+                        message.tag = reader.readString();
+                        break;
+                    default: reader.skipField();
+                }
+            }
+            return message;
+        }
+        serializeBinary(): Uint8Array {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes: Uint8Array): SimpleType {
+            return SimpleType.deserialize(bytes);
+        }
+    }
+    export class AdvancedType extends pb_1.Message {
+        #one_of_decls: number[][] = [];
+        constructor(data?: any[] | {
+            tag?: string;
+            namespace?: string;
+        }) {
+            super();
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
+            if (!Array.isArray(data) && typeof data == "object") {
+                if ("tag" in data && data.tag != undefined) {
+                    this.tag = data.tag;
+                }
+                if ("namespace" in data && data.namespace != undefined) {
+                    this.namespace = data.namespace;
+                }
+            }
+        }
+        get tag() {
+            return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
+        }
+        set tag(value: string) {
+            pb_1.Message.setField(this, 1, value);
+        }
+        get namespace() {
+            return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
+        }
+        set namespace(value: string) {
+            pb_1.Message.setField(this, 2, value);
+        }
+        static fromObject(data: {
+            tag?: string;
+            namespace?: string;
+        }): AdvancedType {
+            const message = new AdvancedType({});
+            if (data.tag != null) {
+                message.tag = data.tag;
+            }
+            if (data.namespace != null) {
+                message.namespace = data.namespace;
+            }
+            return message;
+        }
+        toObject() {
+            const data: {
+                tag?: string;
+                namespace?: string;
+            } = {};
+            if (this.tag != null) {
+                data.tag = this.tag;
+            }
+            if (this.namespace != null) {
+                data.namespace = this.namespace;
+            }
+            return data;
+        }
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+            const writer = w || new pb_1.BinaryWriter();
+            if (this.tag.length)
+                writer.writeString(1, this.tag);
+            if (this.namespace.length)
+                writer.writeString(2, this.namespace);
+            if (!w)
+                return writer.getResultBuffer();
+        }
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): AdvancedType {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new AdvancedType();
+            while (reader.nextField()) {
+                if (reader.isEndGroup())
+                    break;
+                switch (reader.getFieldNumber()) {
+                    case 1:
+                        message.tag = reader.readString();
+                        break;
+                    case 2:
+                        message.namespace = reader.readString();
+                        break;
+                    default: reader.skipField();
+                }
+            }
+            return message;
+        }
+        serializeBinary(): Uint8Array {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes: Uint8Array): AdvancedType {
+            return AdvancedType.deserialize(bytes);
         }
     }
 }

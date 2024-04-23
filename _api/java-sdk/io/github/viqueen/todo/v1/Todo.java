@@ -15,6 +15,49 @@ public  final class Todo extends
     id_ = "";
     description_ = "";
   }
+  private int typeCase_ = 0;
+  private java.lang.Object type_;
+  public enum TypeCase {
+    SIMPLE(4),
+    ADVANCED(5),
+    TYPE_NOT_SET(0);
+    private final int value;
+    private TypeCase(int value) {
+      this.value = value;
+    }
+    /**
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static TypeCase valueOf(int value) {
+      return forNumber(value);
+    }
+
+    public static TypeCase forNumber(int value) {
+      switch (value) {
+        case 4: return SIMPLE;
+        case 5: return ADVANCED;
+        case 0: return TYPE_NOT_SET;
+        default: return null;
+      }
+    }
+    public int getNumber() {
+      return this.value;
+    }
+  };
+
+  @java.lang.Override
+  public TypeCase
+  getTypeCase() {
+    return TypeCase.forNumber(
+        typeCase_);
+  }
+
+  private void clearType() {
+    typeCase_ = 0;
+    type_ = null;
+  }
+
   public static final int ID_FIELD_NUMBER = 1;
   private java.lang.String id_;
   /**
@@ -135,6 +178,106 @@ public  final class Todo extends
     completed_ = false;
   }
 
+  public static final int SIMPLE_FIELD_NUMBER = 4;
+  /**
+   * <code>.todo.v1.SimpleType simple = 4 [json_name = "simple"];</code>
+   */
+  @java.lang.Override
+  public boolean hasSimple() {
+    return typeCase_ == 4;
+  }
+  /**
+   * <code>.todo.v1.SimpleType simple = 4 [json_name = "simple"];</code>
+   */
+  @java.lang.Override
+  public io.github.viqueen.todo.v1.SimpleType getSimple() {
+    if (typeCase_ == 4) {
+       return (io.github.viqueen.todo.v1.SimpleType) type_;
+    }
+    return io.github.viqueen.todo.v1.SimpleType.getDefaultInstance();
+  }
+  /**
+   * <code>.todo.v1.SimpleType simple = 4 [json_name = "simple"];</code>
+   */
+  private void setSimple(io.github.viqueen.todo.v1.SimpleType value) {
+    value.getClass();
+  type_ = value;
+    typeCase_ = 4;
+  }
+  /**
+   * <code>.todo.v1.SimpleType simple = 4 [json_name = "simple"];</code>
+   */
+  private void mergeSimple(io.github.viqueen.todo.v1.SimpleType value) {
+    value.getClass();
+  if (typeCase_ == 4 &&
+        type_ != io.github.viqueen.todo.v1.SimpleType.getDefaultInstance()) {
+      type_ = io.github.viqueen.todo.v1.SimpleType.newBuilder((io.github.viqueen.todo.v1.SimpleType) type_)
+          .mergeFrom(value).buildPartial();
+    } else {
+      type_ = value;
+    }
+    typeCase_ = 4;
+  }
+  /**
+   * <code>.todo.v1.SimpleType simple = 4 [json_name = "simple"];</code>
+   */
+  private void clearSimple() {
+    if (typeCase_ == 4) {
+      typeCase_ = 0;
+      type_ = null;
+    }
+  }
+
+  public static final int ADVANCED_FIELD_NUMBER = 5;
+  /**
+   * <code>.todo.v1.AdvancedType advanced = 5 [json_name = "advanced"];</code>
+   */
+  @java.lang.Override
+  public boolean hasAdvanced() {
+    return typeCase_ == 5;
+  }
+  /**
+   * <code>.todo.v1.AdvancedType advanced = 5 [json_name = "advanced"];</code>
+   */
+  @java.lang.Override
+  public io.github.viqueen.todo.v1.AdvancedType getAdvanced() {
+    if (typeCase_ == 5) {
+       return (io.github.viqueen.todo.v1.AdvancedType) type_;
+    }
+    return io.github.viqueen.todo.v1.AdvancedType.getDefaultInstance();
+  }
+  /**
+   * <code>.todo.v1.AdvancedType advanced = 5 [json_name = "advanced"];</code>
+   */
+  private void setAdvanced(io.github.viqueen.todo.v1.AdvancedType value) {
+    value.getClass();
+  type_ = value;
+    typeCase_ = 5;
+  }
+  /**
+   * <code>.todo.v1.AdvancedType advanced = 5 [json_name = "advanced"];</code>
+   */
+  private void mergeAdvanced(io.github.viqueen.todo.v1.AdvancedType value) {
+    value.getClass();
+  if (typeCase_ == 5 &&
+        type_ != io.github.viqueen.todo.v1.AdvancedType.getDefaultInstance()) {
+      type_ = io.github.viqueen.todo.v1.AdvancedType.newBuilder((io.github.viqueen.todo.v1.AdvancedType) type_)
+          .mergeFrom(value).buildPartial();
+    } else {
+      type_ = value;
+    }
+    typeCase_ = 5;
+  }
+  /**
+   * <code>.todo.v1.AdvancedType advanced = 5 [json_name = "advanced"];</code>
+   */
+  private void clearAdvanced() {
+    if (typeCase_ == 5) {
+      typeCase_ = 0;
+      type_ = null;
+    }
+  }
+
   public static io.github.viqueen.todo.v1.Todo parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -227,6 +370,18 @@ public  final class Todo extends
     // Construct using io.github.viqueen.todo.v1.Todo.newBuilder()
     private Builder() {
       super(DEFAULT_INSTANCE);
+    }
+
+    @java.lang.Override
+    public TypeCase
+        getTypeCase() {
+      return instance.getTypeCase();
+    }
+
+    public Builder clearType() {
+      copyOnWrite();
+      instance.clearType();
+      return this;
     }
 
 
@@ -356,6 +511,102 @@ public  final class Todo extends
       return this;
     }
 
+    /**
+     * <code>.todo.v1.SimpleType simple = 4 [json_name = "simple"];</code>
+     */
+    @java.lang.Override
+    public boolean hasSimple() {
+      return instance.hasSimple();
+    }
+    /**
+     * <code>.todo.v1.SimpleType simple = 4 [json_name = "simple"];</code>
+     */
+    @java.lang.Override
+    public io.github.viqueen.todo.v1.SimpleType getSimple() {
+      return instance.getSimple();
+    }
+    /**
+     * <code>.todo.v1.SimpleType simple = 4 [json_name = "simple"];</code>
+     */
+    public Builder setSimple(io.github.viqueen.todo.v1.SimpleType value) {
+      copyOnWrite();
+      instance.setSimple(value);
+      return this;
+    }
+    /**
+     * <code>.todo.v1.SimpleType simple = 4 [json_name = "simple"];</code>
+     */
+    public Builder setSimple(
+        io.github.viqueen.todo.v1.SimpleType.Builder builderForValue) {
+      copyOnWrite();
+      instance.setSimple(builderForValue.build());
+      return this;
+    }
+    /**
+     * <code>.todo.v1.SimpleType simple = 4 [json_name = "simple"];</code>
+     */
+    public Builder mergeSimple(io.github.viqueen.todo.v1.SimpleType value) {
+      copyOnWrite();
+      instance.mergeSimple(value);
+      return this;
+    }
+    /**
+     * <code>.todo.v1.SimpleType simple = 4 [json_name = "simple"];</code>
+     */
+    public Builder clearSimple() {
+      copyOnWrite();
+      instance.clearSimple();
+      return this;
+    }
+
+    /**
+     * <code>.todo.v1.AdvancedType advanced = 5 [json_name = "advanced"];</code>
+     */
+    @java.lang.Override
+    public boolean hasAdvanced() {
+      return instance.hasAdvanced();
+    }
+    /**
+     * <code>.todo.v1.AdvancedType advanced = 5 [json_name = "advanced"];</code>
+     */
+    @java.lang.Override
+    public io.github.viqueen.todo.v1.AdvancedType getAdvanced() {
+      return instance.getAdvanced();
+    }
+    /**
+     * <code>.todo.v1.AdvancedType advanced = 5 [json_name = "advanced"];</code>
+     */
+    public Builder setAdvanced(io.github.viqueen.todo.v1.AdvancedType value) {
+      copyOnWrite();
+      instance.setAdvanced(value);
+      return this;
+    }
+    /**
+     * <code>.todo.v1.AdvancedType advanced = 5 [json_name = "advanced"];</code>
+     */
+    public Builder setAdvanced(
+        io.github.viqueen.todo.v1.AdvancedType.Builder builderForValue) {
+      copyOnWrite();
+      instance.setAdvanced(builderForValue.build());
+      return this;
+    }
+    /**
+     * <code>.todo.v1.AdvancedType advanced = 5 [json_name = "advanced"];</code>
+     */
+    public Builder mergeAdvanced(io.github.viqueen.todo.v1.AdvancedType value) {
+      copyOnWrite();
+      instance.mergeAdvanced(value);
+      return this;
+    }
+    /**
+     * <code>.todo.v1.AdvancedType advanced = 5 [json_name = "advanced"];</code>
+     */
+    public Builder clearAdvanced() {
+      copyOnWrite();
+      instance.clearAdvanced();
+      return this;
+    }
+
     // @@protoc_insertion_point(builder_scope:todo.v1.Todo)
   }
   @java.lang.Override
@@ -372,13 +623,17 @@ public  final class Todo extends
       }
       case BUILD_MESSAGE_INFO: {
           java.lang.Object[] objects = new java.lang.Object[] {
+            "type_",
+            "typeCase_",
             "id_",
             "description_",
             "completed_",
+            io.github.viqueen.todo.v1.SimpleType.class,
+            io.github.viqueen.todo.v1.AdvancedType.class,
           };
           java.lang.String info =
-              "\u0000\u0003\u0000\u0000\u0001\u0003\u0003\u0000\u0000\u0000\u0001\u0208\u0002\u0208" +
-              "\u0003\u0007";
+              "\u0000\u0005\u0001\u0000\u0001\u0005\u0005\u0000\u0000\u0000\u0001\u0208\u0002\u0208" +
+              "\u0003\u0007\u0004<\u0000\u0005<\u0000";
           return newMessageInfo(DEFAULT_INSTANCE, info, objects);
       }
       // fall through
