@@ -12,4 +12,4 @@ RUN addgroup -S nonroot \
 
 USER nonroot
 
-WORKDIR /workspace
+WORKDIR /workspace/schema
