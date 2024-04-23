@@ -39,7 +39,7 @@ jobs:
     needs: schema-tools
     runs-on: ubuntu-22.04
     container:
-      image: ${{ env.REGISTRY }}/${{ env.SCHEMA_TOOLS_IMAGE }}
+      image: ghcr.io/monorepo-template-protobuf-gen
       volumes:
         - _schema:/workspace/_schema
         - _api:/workspace/_api
