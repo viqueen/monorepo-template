@@ -17,3 +17,6 @@ plugins:
     opt:
       - generate_services=true
       - output_services=grpc-js
+  - plugin: java
+    out: ../_api/java-sdk
+    opt: lite

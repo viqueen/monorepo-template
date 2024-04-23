@@ -1,6 +1,8 @@
 syntax = "proto3";
 
 option go_package = "github.com/viqueen/monorepo-template/_api/go-sdk/todo/v1;todoV1";
+option java_package = "io.github.viqueen.todo.v1";
+option java_multiple_files = true;
 
 package todo.v1;
 
