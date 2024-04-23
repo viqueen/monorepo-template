@@ -44,6 +44,7 @@ jobs:
         - ${{ github.workspace }}/_schema:/workspace/schema
         - ${{ github.workspace }}/_api:/workspace/api
     steps:
+      - uses: actions/checkout@v4
       - run: buf generate --verbose
 
   lint-and-build:
