@@ -18,6 +18,7 @@ jobs:
         with:
           distribution: "temurin"
           java-version: "17"
+          cache: "maven"
       - run: yarn
       - run: yarn lint
       - run: yarn format:check
