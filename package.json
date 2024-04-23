@@ -9,6 +9,7 @@
   "workspaces": [
     "_api/node-sdk",
     "_api/web-sdk",
+    "_api/java-sdk",
     "apps/**",
     "lib/web-sdk"
   ],

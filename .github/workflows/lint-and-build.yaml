@@ -1,4 +1,4 @@
-name: "Lint and format"
+name: "Lint and build"
 on:
   push:
     branches:
@@ -6,7 +6,7 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
-  lint-and-format:
+  lint-and-build:
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4
@@ -14,6 +14,11 @@ jobs:
         with:
           node-version: 20
           cache: "npm"
+      - uses: actions/setup-java@v4
+        with:
+          distribution: "temurin"
+          java-version: "17"
       - run: yarn
       - run: yarn lint
       - run: yarn format:check
+      - run: yarn build sdks
