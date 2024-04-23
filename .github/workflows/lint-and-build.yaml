@@ -35,7 +35,7 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
 
-  schema-codegen-and-build-sdk:
+  schema-codegen-and-build-sdks:
     needs: schema-tools
     runs-on: ubuntu-22.04
     steps:
