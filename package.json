@@ -10,6 +10,7 @@
     "_api/node-sdk",
     "_api/web-sdk",
     "_api/java-sdk",
+    "_api/kotlin-sdk",
     "apps/**",
     "lib/web-sdk"
   ],
