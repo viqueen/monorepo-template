@@ -14,6 +14,8 @@ function codegen() {
     --volume "${PWD}/_api/node-sdk:/workspace/_api/node-sdk" \
     --volume "${PWD}/_api/web-sdk:/workspace/_api/web-sdk" \
     --volume "${PWD}/_api/java-sdk:/workspace/_api/java-sdk" \
+    --volume "${PWD}/_api/kotlin-sdk:/workspace/_api/kotlin-sdk" \
+    --volume "${PWD}/_api/swift-sdk:/workspace/_api/swift-sdk" \
     --workdir "/workspace/_schema" \
     monorepo-template/protobuf-gen buf generate --verbose
 }

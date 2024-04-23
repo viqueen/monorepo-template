@@ -1,23 +1,39 @@
 version: v1
 plugins:
-  - plugin: go
+  # go-sdk
+  - plugin: buf.build/protocolbuffers/go
     out: ../_api/go-sdk
     opt: paths=source_relative
-  - plugin: go-grpc
+  - plugin: buf.build/grpc/go
     out: ../_api/go-sdk
     opt: paths=source_relative
-  - plugin: es
+
+  # web-sdk
+  - plugin: buf.build/bufbuild/es
     out: ../_api/web-sdk/src
     opt: target=ts
-  - plugin: connect-es
+  - plugin: buf.build/connectrpc/es
     out: ../_api/web-sdk/src
     opt: target=ts
+
+  # node-sdk
   - plugin: ts
     strategy: all
     out: ../_api/node-sdk/src
     opt:
       - generate_services=true
       - output_services=grpc-js
-  - plugin: java
+
+  # java-sdk
+  - plugin: buf.build/protocolbuffers/java
     out: ../_api/java-sdk/src/main/java
-    opt: lite
+
+  # kotlin-sdk
+  - plugin: buf.build/protocolbuffers/kotlin
+    out: ../_api/kotlin-sdk/src/main/kotlin
+
+  # swift-sdk
+  - plugin: buf.build/connectrpc/swift
+    out: ../_api/swift-sdk
+  - plugin: buf.build/apple/swift
+    out: ../_api/swift-sdk
