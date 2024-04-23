@@ -4,10 +4,11 @@ set -ex
 
 function tools() {
   cd _schema/protobuf-gen || exit
-  docker build -t monorepo-template/protobuf-gen .
+  docker build -t monorepo-template-protobuf-gen .
 }
 
 function codegen() {
+  registry=${1}
   docker run \
     --volume "${PWD}/_schema:/workspace/_schema" \
     --volume "${PWD}/_api/go-sdk:/workspace/_api/go-sdk" \
@@ -17,7 +18,7 @@ function codegen() {
     --volume "${PWD}/_api/kotlin-sdk:/workspace/_api/kotlin-sdk" \
     --volume "${PWD}/_api/swift-sdk:/workspace/_api/swift-sdk" \
     --workdir "/workspace/_schema" \
-    monorepo-template/protobuf-gen buf generate --verbose
+    "${registry}"monorepo-template-protobuf-gen buf generate --verbose
 }
 
 function lint() {
