@@ -46,4 +46,4 @@ This project is a full-stack, monorepo application that uses a variety of modern
 
 1. Setup environment: `yarn harness env:up`
 2. Start the backend: `yarn todo server:dev`
-3. Start the frontend: `yarn todo web:dev`
+3. Start the frontend with material ui: `yarn todo web-mui:dev`

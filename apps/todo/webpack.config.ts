@@ -8,6 +8,8 @@ const gateway = {
   apiUrl: "http://localhost:8080",
 };
 
+const target = process.env.TARGET || "web-mui";
+
 const config: Configuration & DevConfiguration = {
   mode: "development",
   devServer: {
@@ -15,7 +17,7 @@ const config: Configuration & DevConfiguration = {
     open: true,
   },
   entry: {
-    app: "./web/entry/index.tsx",
+    app: `./${target}/entry/index.tsx`,
   },
   target: "web",
   resolve: {
@@ -39,7 +41,7 @@ const config: Configuration & DevConfiguration = {
       __GATEWAY__: JSON.stringify(gateway),
     }),
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, "web", "entry", "index.html"),
+      template: path.resolve(__dirname, target, "entry", "index.html"),
     }),
   ],
 };

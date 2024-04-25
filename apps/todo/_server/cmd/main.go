@@ -2,7 +2,7 @@ package main
 
 import (
 	grpczap "github.com/grpc-ecosystem/go-grpc-middleware/logging/zap"
-	"github.com/viqueen/protobuf-template/apps/todo/server/export"
+	"github.com/viqueen/protobuf-template/apps/todo/_server/export"
 	appserver "github.com/viqueen/protobuf-template/lib/go-sdk/app-server"
 	"go.uber.org/zap"
 	"google.golang.org/grpc"

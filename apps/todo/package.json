@@ -4,6 +4,6 @@
   "private": true,
   "scripts": {
     "server:dev": "nodemon",
-    "web:dev": "webpack serve"
+    "web-mui:dev": "TARGET=web-mui webpack serve"
   }
 }
