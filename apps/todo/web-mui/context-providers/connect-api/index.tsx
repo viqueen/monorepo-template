@@ -7,16 +7,16 @@ import React, {
 
 import { createPromiseClient, PromiseClient } from "@connectrpc/connect";
 import { createGrpcWebTransport } from "@connectrpc/connect-web";
-import { TodoV1Connect } from "@labset/monorepo-template-api-web-sdk";
+import { TodoV1TodoServiceConnect } from "@labset/monorepo-template-api-web-sdk";
 
 import { gateway } from "../../components";
 
 interface ConnectApi {
-  todoClient: PromiseClient<typeof TodoV1Connect.TodoService>;
+  todoClient: PromiseClient<typeof TodoV1TodoServiceConnect.TodoService>;
 }
 
 const ConnectApiContext = createContext<ConnectApi>({
-  todoClient: {} as PromiseClient<typeof TodoV1Connect.TodoService>,
+  todoClient: {} as PromiseClient<typeof TodoV1TodoServiceConnect.TodoService>,
 });
 
 const useConnectApi = () => useContext(ConnectApiContext);
@@ -29,7 +29,7 @@ const ConnectApiProvider = ({ children }: PropsWithChildren) => {
 
   const value = useMemo(() => {
     const todoClient = createPromiseClient(
-      TodoV1Connect.TodoService,
+      TodoV1TodoServiceConnect.TodoService,
       transport,
     );
     return {

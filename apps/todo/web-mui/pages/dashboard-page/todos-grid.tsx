@@ -1,6 +1,6 @@
 import React from "react";
 
-import { TodoV1Service } from "@labset/monorepo-template-api-web-sdk";
+import { TodoV1TodoService } from "@labset/monorepo-template-api-web-sdk";
 import {
   Alert,
   Card,
@@ -12,7 +12,7 @@ import {
 
 interface TodosGridProps {
   isLoading: boolean;
-  data?: TodoV1Service.ListResponse;
+  data?: TodoV1TodoService.ListResponse;
   error?: unknown;
 }
 
