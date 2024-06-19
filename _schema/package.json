@@ -1,0 +1,9 @@
+{
+  "name": "@labset/monorepo-template-schema",
+  "version": "1.0.0",
+  "scripts": {
+    "codegen": "bin/codegen.sh",
+    "sdks": "bin/sdks.sh"
+  },
+  "private": true
+}

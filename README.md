@@ -38,9 +38,8 @@ This project is a full-stack, monorepo application that uses a variety of modern
 ### Build Instructions
 
 1. Install dependencies: `yarn`
-2. Build required tools for schema: `yarn schema tools`
-3. Generate code for schema: `yarn schema codegen`
-4. Build the sdks: `yarn build sdks`
+2. Generate code for schema: `yarn schema codegen`
+3. Build the sdks: `yarn schema sdks`
 
 ### Run Instructions
 
