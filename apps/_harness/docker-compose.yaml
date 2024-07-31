@@ -1,5 +1,3 @@
-version: "3.9"
-
 services:
   aws-localstack:
     image: localstack/localstack:3.0.2
