@@ -2,6 +2,9 @@
 
 _clean() {
   rm -rf ../_api/web-sdk/dist
+  rm -rf ../_api/node-sdk/dist
+  rm -rf ../_api/java-sdk/target
+  rm -rf ../_api/kotlin-sdk/target
 }
 
 _build() {

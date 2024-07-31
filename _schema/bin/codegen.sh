@@ -2,7 +2,10 @@
 
 _clean() {
   find ../_api/go-sdk -name "*.go" -exec rm -f {} \;
-  find ../_api/web-sdk -name "*.ts" -exec rm -f {} \;
+  rm -rf ../_api/node-sdk/src/*
+  rm -rf ../_api/web-sdk/src/*
+  rm -rf ../_api/java-sdk/src/*
+  rm -rf ../_api/kotlin-sdk/src/*
 }
 
 

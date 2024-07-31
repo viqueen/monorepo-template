@@ -23,7 +23,7 @@ jobs:
           cache: "maven"
       - run: yarn schema codegen ghcr.io/ :main
       - run: yarn
-      - run: yarn build sdks
+      - run: yarn schema sdks
 
   lint-and-build:
     needs: schema-codegen-and-build-sdks
