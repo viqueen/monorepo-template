@@ -42,7 +42,7 @@ services:
       - "local"
 
   envoy-proxy:
-    image: envoyproxy/envoy:v1.29.2
+    image: envoyproxy/envoy:v1.30.4
     command: "/usr/local/bin/envoy -c /etc/envoy/envoy.yaml --log-level debug"
     volumes:
       - "./envoy.yaml:/etc/envoy/envoy.yaml"
