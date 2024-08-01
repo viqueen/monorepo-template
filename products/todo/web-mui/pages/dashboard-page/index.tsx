@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useQuery } from "react-query";
 
-import { TodoV1TodoService } from "@labset/monorepo-template-api-web-sdk";
+import { ListResponse } from "@labset/monorepo-template-api-web-sdk/dist/todo/v1/service_pb";
 import { Button, Container, Divider, Grid, TextField } from "@mui/material";
 
 import { useConnectApi } from "../../context-providers";
@@ -15,18 +15,16 @@ const DashboardPage = () => {
   const { data, isLoading, error, refetch } = useQuery(
     "todos",
     async () => {
-      return await todoClient.list(new TodoV1TodoService.ListRequest({}));
+      return (await todoClient.list({})) as ListResponse;
     },
     { retry: false },
   );
 
   const onAdd = () => {
     todoClient
-      .create(
-        new TodoV1TodoService.CreateRequest({
-          todo: { id: crypto.randomUUID(), description },
-        }),
-      )
+      .create({
+        todo: { id: crypto.randomUUID(), description },
+      })
       .then(() => setDescription(""))
       .then(() => refetch());
   };

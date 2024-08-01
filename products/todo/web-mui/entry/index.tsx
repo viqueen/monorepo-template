@@ -2,7 +2,7 @@ import React from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { HashRouter, Navigate, Route, Routes } from "react-router-dom";
 
-import { PageLayout } from "@labset/monorepo-template-lib-web-sdk";
+import { PageLayout } from "@labset/monorepo-template-shared-web-sdk";
 import AdjustIcon from "@mui/icons-material/Adjust";
 import { createTheme, CssBaseline, ThemeProvider } from "@mui/material";
 import { createRoot, hydrateRoot } from "react-dom/client";

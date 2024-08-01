@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "build": "echo skip",
     "env:up": "docker compose up -d",
     "env:down": "docker compose down",
     "env:start": "docker compose start",

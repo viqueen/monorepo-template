@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "build": "yarn run build:web",
+    "build:web": "TARGET=web-mui webpack --mode production",
     "server:dev": "nodemon",
     "web-mui:dev": "TARGET=web-mui webpack serve"
   }
