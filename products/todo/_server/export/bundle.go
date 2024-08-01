@@ -1,9 +1,9 @@
 package export
 
 import (
-	todoV1 "github.com/viqueen/protobuf-template/_api/go-sdk/todo/v1"
-	"github.com/viqueen/protobuf-template/apps/todo/_server/internal/serviceV1"
+	todoV1 "_api/go-sdk/todo/v1"
 	"google.golang.org/grpc"
+	"products/todo/_server/internal/serviceV1"
 )
 
 func Bundle(server *grpc.Server) {

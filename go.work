@@ -2,6 +2,6 @@ go 1.22.0
 
 use (
 	./_api/go-sdk
-	./products/todo
 	./_shared/go-sdk
+	./products/todo
 )

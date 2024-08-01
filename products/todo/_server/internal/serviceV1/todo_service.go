@@ -1,8 +1,8 @@
 package serviceV1
 
 import (
+	"_api/go-sdk/todo/v1"
 	"context"
-	"github.com/viqueen/protobuf-template/_api/go-sdk/todo/v1"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )

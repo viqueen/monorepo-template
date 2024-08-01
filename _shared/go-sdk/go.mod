@@ -1,4 +1,4 @@
-module github.com/viqueen/protobuf-template/lib/go-sdk
+module _shared/go-sdk
 
 go 1.22.0
 

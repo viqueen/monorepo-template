@@ -1,14 +1,14 @@
 package main
 
 import (
+	appserver "_shared/go-sdk/app-server"
 	grpczap "github.com/grpc-ecosystem/go-grpc-middleware/logging/zap"
-	"github.com/viqueen/protobuf-template/apps/todo/_server/export"
-	appserver "github.com/viqueen/protobuf-template/lib/go-sdk/app-server"
 	"go.uber.org/zap"
 	"google.golang.org/grpc"
 	"log"
 	"os"
 	"os/signal"
+	"products/todo/_server/export"
 	"syscall"
 )
 
