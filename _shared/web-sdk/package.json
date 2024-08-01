@@ -1,5 +1,5 @@
 {
-  "name": "@labset/monorepo-template-lib-web-sdk",
+  "name": "@labset/monorepo-template-shared-web-sdk",
   "version": "1.0.0",
   "private": true,
   "main": "dist/index.js",

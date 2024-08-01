@@ -12,10 +12,12 @@
     "_api/java-sdk",
     "_api/kotlin-sdk",
     "_schema",
-    "apps/**",
-    "lib/web-sdk"
+    "_shared/web-sdk",
+    "harness/",
+    "products/**"
   ],
   "scripts": {
+    "build": "yarn workspaces run build",
     "lint": "eslint . --ext .ts",
     "format": "prettier --check --write .",
     "format:check": "prettier --check .",
